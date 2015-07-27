@@ -1,7 +1,7 @@
 {
-  "name": "beach-locator",
+  "name": "surf-locator",
   "version": "0.0.1",
-  "description": "A beach location service",
+  "description": "A surf spot location service",
   "main": "index.js",
   "engines": {
     "iojs": "2.4.x"
