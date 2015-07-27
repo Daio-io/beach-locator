@@ -1,0 +1,28 @@
+{
+  "name": "beach-locator",
+  "version": "0.0.1",
+  "description": "A beach location service",
+  "main": "index.js",
+  "engines": {
+    "iojs": "2.4.x"
+  },
+  "author": "daio.io",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Daveloper87/beach-suggest.git"
+  },
+  "dependencies": {
+    "koa": "^0.21.0",
+    "koa-cors": "0.0.16",
+    "koa-router": "^5.1.2",
+    "mongoose": "^4.0.5",
+    "mongoose-cache": "^0.1.4",
+    "tooly": "https://github.com/Daveloper87/tooly.git"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "got": "^3.2.0",
+    "mocha": "^2.2.5"
+  }
+}
