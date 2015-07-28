@@ -1,10 +1,12 @@
 'use strict';
 
-var locatorRoutes = require('../locator/beach.router');
+const locatorRoutes = require('../locator/beach.router');
+const statusRoutes = require('../status/status.router');
 
 module.exports = function(app) {
 
   app.use(locatorRoutes.routes());
+  app.use(statusRoutes.routes());
 
 };
 
