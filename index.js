@@ -17,7 +17,7 @@ function startServer() {
 
   server.listen(settings.port, function() {
 
-    console.log('Surf-Locator Started on port:', settings.port);
+    console.log('Beach-Locator Started on port:', settings.port);
 
   });
   
