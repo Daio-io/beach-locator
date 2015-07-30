@@ -21,3 +21,13 @@ exports.locateBeach = function *() {
   }
 
 };
+
+exports.beachById = function *() {
+  
+  let spot_id = this.params.spotid;
+  let query = BeachModel.find({spotId: spot_id}, searchFields)
+    .cache();
+  
+  this.body = yield query.exec();
+
+};

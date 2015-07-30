@@ -1,8 +1,8 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var config = require('./db.config');
-var cache = require('mongoose-cache');
+const mongoose = require('mongoose');
+const config = require('./db.config');
+const cache = require('mongoose-cache');
 
 module.exports = function() {
   
