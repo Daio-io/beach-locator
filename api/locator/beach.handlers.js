@@ -9,7 +9,6 @@ exports.locateBeach = function *() {
   if (tooly.existy(this.query.q)) {
 
     let safeSearch = tooly.cleansey(this.query.q);
-
     let query = BeachModel
       .find({ $text: { $search: safeSearch} }, returnFields)
       .cache();
@@ -25,7 +24,8 @@ exports.locateBeach = function *() {
 exports.beachById = function *() {
   
   let spot_id = this.params.spotid;
-  let query = BeachModel.find({spotId: spot_id}, returnFields)
+  let query = BeachModel
+    .find({spotId: spot_id}, returnFields)
     .cache();
   
   this.body = yield query.exec();
