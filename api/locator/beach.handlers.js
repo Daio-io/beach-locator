@@ -2,7 +2,7 @@
 
 const tooly = require('tooly');
 const BeachModel = require('./beach.model');
-const searchFields = '-_id location spotId latitude longitude country';
+const returnFields = '-_id -__v';
 
 exports.locateBeach = function *() {
 
@@ -11,7 +11,7 @@ exports.locateBeach = function *() {
     let safeSearch = tooly.cleansey(this.query.q);
 
     let query = BeachModel
-      .find({ $text: { $search: safeSearch} }, searchFields)
+      .find({ $text: { $search: safeSearch} }, returnFields)
       .cache();
 
     this.body = yield query.exec();
@@ -25,7 +25,7 @@ exports.locateBeach = function *() {
 exports.beachById = function *() {
   
   let spot_id = this.params.spotid;
-  let query = BeachModel.find({spotId: spot_id}, searchFields)
+  let query = BeachModel.find({spotId: spot_id}, returnFields)
     .cache();
   
   this.body = yield query.exec();
