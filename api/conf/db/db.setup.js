@@ -7,7 +7,7 @@ const cache = require('mongoose-cache');
 module.exports = function() {
   
   switch (process.env.NODE_ENV) {
-    case 'production':
+    case 'live':
       cache.install(mongoose, config.prod.cache);
       mongoose.connect(config.prod.connectionString, config.prod.options);
       break;
