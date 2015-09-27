@@ -4,7 +4,7 @@
   "description": "A beach location service",
   "main": "index.js",
   "engines": {
-    "iojs": "2.4.x"
+    "node": "4.x.x"
   },
   "author": "daio.io",
   "license": "ISC",
@@ -13,13 +13,13 @@
     "url": "git@github.com:Daveloper87/beach-locator.git"
   },
   "dependencies": {
-    "koa": "^0.21.0",
+    "koa": "^1.0.0",
     "koa-cors": "0.0.16",
     "koa-router": "^5.1.2",
     "mongoose": "^4.0.5",
     "mongoose-cache": "^0.1.4",
     "mongoose-text-search": "0.0.2",
-    "tooly": "https://github.com/Daveloper87/tooly.git"
+    "tooly": "https://github.com/daio-io/tooly.git"
   },
   "devDependencies": {
     "chai": "^3.0.0",
