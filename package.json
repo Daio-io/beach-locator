@@ -4,7 +4,7 @@
   "description": "A beach location service",
   "main": "index.js",
   "engines": {
-    "node": "4.x.x"
+    "node": "5.x.x"
   },
   "author": "daio.io",
   "license": "ISC",
