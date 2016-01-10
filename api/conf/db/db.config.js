@@ -3,7 +3,7 @@
 module.exports = {
 
   dev: {
-    connectionString: 'mongodb://localhost/beach-locator',
+    connectionString: 'mongodb://localhost/beachy',
 
     options: {
       server: {
