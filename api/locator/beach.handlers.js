@@ -1,12 +1,12 @@
 'use strict';
 
 const emptyResponse = { status: 'empty', response: [], message: 'No results found for search'};
-const queryService = require('./query.service');
+const queryFactory = require('./query.factory');
 const tooly = require('tooly');
 
 exports.locateBeach = function *() {
 
-  let query = queryService.searchByGeo(this.query);
+  let query = queryFactory.searchByGeo(this.query);
 
   let data = yield query.exec();
 
@@ -19,7 +19,7 @@ exports.beachBySearch = function *() {
   let search = this.params.search;
   if (tooly.inty(search) === 0) {
 
-    let query = queryService.searchByText(search);
+    let query = queryFactory.searchByText(search);
 
     let data = yield query.exec();
 
@@ -27,7 +27,7 @@ exports.beachBySearch = function *() {
 
   } else {
 
-    let query = queryService.searchById(search);
+    let query = queryFactory.searchById(search);
 
     let data = yield query.exec();
 
