@@ -39,7 +39,7 @@ function _geoSearch(geoData) {
 
 
 module.exports = {
- searchByGeo: _geoSearch,
- searchById: _idSearch,
- searchByText: _textSearch
+ searchByGeoQuery: _geoSearch,
+ searchByIdQuery: _idSearch,
+ searchByTextQuery: _textSearch
 };

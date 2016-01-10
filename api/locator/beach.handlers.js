@@ -6,7 +6,7 @@ const tooly = require('tooly');
 
 exports.locateBeach = function *() {
 
-  let query = queryFactory.searchByGeo(this.query);
+  let query = queryFactory.searchByGeoQuery(this.query);
 
   let data = yield query.exec();
 
@@ -19,7 +19,7 @@ exports.beachBySearch = function *() {
   let search = this.params.search;
   if (tooly.inty(search) === 0) {
 
-    let query = queryFactory.searchByText(search);
+    let query = queryFactory.searchByTextQuery(search);
 
     let data = yield query.exec();
 
@@ -27,7 +27,7 @@ exports.beachBySearch = function *() {
 
   } else {
 
-    let query = queryFactory.searchById(search);
+    let query = queryFactory.searchByIdQuery(search);
 
     let data = yield query.exec();
 
