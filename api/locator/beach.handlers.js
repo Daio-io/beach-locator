@@ -1,33 +1,57 @@
 'use strict';
 
+const emptyResponse = { status: 'empty', response: [], message: 'No results found for search'};
+const queryFactory = require('./query.factory');
 const tooly = require('tooly');
-const BeachModel = require('./beach.model');
-const returnFields = '-_id -__v';
 
 exports.locateBeach = function *() {
 
-  if (tooly.existy(this.query.q)) {
+  let query = queryFactory.searchByGeoQuery(this.query);
 
-    let safeSearch = tooly.cleansey(this.query.q);
-    let query = BeachModel
-      .find({ $text: { $search: safeSearch} }, returnFields)
-      .cache();
+  let data = yield query.exec();
 
-    this.body = yield query.exec();
+  this.body = _buildResponse(data);
+
+};
+
+exports.beachBySearch = function *() {
+
+  let search = this.params.search;
+  if (tooly.inty(search) === 0) {
+
+    let query = queryFactory.searchByTextQuery(search);
+
+    let data = yield query.exec();
+
+    this.body = _buildResponse(data);
 
   } else {
-    this.body = [];
+
+    let query = queryFactory.searchByIdQuery(search);
+
+    let data = yield query.exec();
+
+    this.body = _buildResponse(data);
   }
 
 };
 
-exports.beachById = function *() {
-  
-  let spot_id = this.params.spotid;
-  let query = BeachModel
-    .find({spotId: spot_id}, returnFields)
-    .cache();
-  
-  this.body = yield query.exec();
+function _buildResponse(data) {
 
-};
+  if (data.length > 0) {
+    let mapped = data.map(function(item) {
+      return {
+        location: item.location,
+        spotId: item.spotId,
+        country: item.country,
+        coords: {
+          lat : item.loc.coordinates[1],
+          long : item.loc.coordinates[0]
+        }
+      }
+    });
+
+    return { response: mapped, status: 'success', message : 'Location search successful'};
+  }
+  return emptyResponse;
+}

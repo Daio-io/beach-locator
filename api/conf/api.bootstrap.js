@@ -1,7 +1,7 @@
 'use strict';
 
-var dbSetup = require('./db/db.setup');
-var cors = require('koa-cors');
+const dbSetup = require('./db/db.setup');
+const cors = require('koa-cors');
 
 module.exports = function(app) {
 

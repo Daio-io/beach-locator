@@ -7,6 +7,10 @@ let BeachLocationSchema = mongoose.Schema({
 
   location: String,
   spotId: Number,
+  loc:    {
+    type: { type: String, default: 'Point' },
+    coordinates: { type: [Number]}
+  },
   latitude: Number,
   longitude: Number,
   country: String
@@ -15,6 +19,7 @@ let BeachLocationSchema = mongoose.Schema({
 
 BeachLocationSchema.plugin(search);
 
+BeachLocationSchema.index({loc: '2dsphere'});
 BeachLocationSchema.index({location: 'text', country: 'text'});
 
 let BeachLocationModel = mongoose.model('BeachLocation', BeachLocationSchema);

@@ -1,4 +1,5 @@
-'use strict'
+'use strict';
+
 const router = require('koa-router')();
 const statusHandlers = require('./status.handlers');
 
