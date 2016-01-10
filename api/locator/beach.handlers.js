@@ -3,6 +3,7 @@
 const tooly = require('tooly');
 const BeachModel = require('./beach.model');
 const returnFields = '-_id -__v';
+const emptyResponse = { status: 'no results', response: [] };
 
 exports.locateBeach = function *() {
 
@@ -13,21 +14,32 @@ exports.locateBeach = function *() {
       .find({ $text: { $search: safeSearch} }, returnFields)
       .cache();
 
-    this.body = yield query.exec();
+    let data = yield query.exec();
 
+    this.body = _buildResponse(data);
   } else {
-    this.body = [];
+    this.body = emptyResponse;
   }
 
 };
 
 exports.beachById = function *() {
-  
+
   let spot_id = this.params.spotid;
   let query = BeachModel
     .find({spotId: spot_id}, returnFields)
     .cache();
   
-  this.body = yield query.exec();
+  let data  = yield query.exec();
+
+  this.body = _buildResponse(data);
 
 };
+
+function _buildResponse(resultData) {
+
+  if (resultData.length > 0) {
+    return { response: resultData, status :'success'};
+  }
+  return emptyResponse;
+}
