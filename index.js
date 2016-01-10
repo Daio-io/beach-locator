@@ -11,6 +11,8 @@ require('./api/conf/api.bootstrap')(app);
 // Routes
 require('./api/conf/api.routes')(app);
 
+app.context.cache = settings.cache;
+
 let server = http.createServer(app.callback());
 
 function startServer() {
