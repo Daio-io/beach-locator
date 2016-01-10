@@ -1,6 +1,6 @@
 'use strict';
 
-exports.getStatus = function *() {
+exports.getStatus = function*() {
 
   this.body = {status: 'OK'};
 
