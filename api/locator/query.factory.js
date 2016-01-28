@@ -8,7 +8,7 @@ const defaultDistance = 10000;
 function _textSearch(query) {
   let safeSearch = tooly.cleansey(query);
   return BeachModel
-    .find({ $text: { $search: safeSearch, $caseSensitive: true} }, returnFields)
+    .find({ $text: { $search: safeSearch} }, returnFields)
     .cache();
 }
 
