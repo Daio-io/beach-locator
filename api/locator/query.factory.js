@@ -7,8 +7,11 @@ const defaultDistance = 10000;
 
 function _textSearch(query) {
   let safeSearch = tooly.cleansey(query);
+  let search = new RegExp(
+    tooly.clippy(safeSearch, 50), 'i'
+  );
   return BeachModel
-    .find({ $text: { $search: safeSearch} }, returnFields)
+    .find({location: search}, returnFields)
     .cache();
 }
 
